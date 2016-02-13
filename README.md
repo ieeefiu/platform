@@ -13,11 +13,11 @@ Pictures coming soon. Eats blocks, shoves them out by color.
 Materials used
 --------------
 
-ATmega328p - Cheap 8-bit microcontroller
-TCS34725 - I<sup>2</sup>C color sensor
-PCA9547 - I<sup>2</sup>C channel switcher
-US5881 - Cheap hall effect sensor
-Some manner of motor or servo, idk
+- ATmega328p - Cheap 8-bit microcontroller
+- TCS34725 - I<sup>2</sup>C color sensor
+- PCA9547 - I<sup>2</sup>C channel switcher
+- US5881 - Cheap hall effect sensor
+- Some manner of motor or servo, idk
 
 who
 ---
