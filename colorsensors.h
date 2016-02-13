@@ -49,8 +49,8 @@ ColorSensor *sensor_init(uint8_t channel);
 /* Output sensor value over USART */
 void sensor_print(ColorSensor *sensor);
 
-/* Gets color value from a color sensor */
-void sensor_get(ColorSensor *sensor);
+/* Obtains data from a color sensor */
+enum colors sensor_get(ColorSensor *sensor);
 
-/* Populates the values array with sensor data from a single sensor */
+/*  */
 void sensor_get_and_set(ColorSensor *sensor);
