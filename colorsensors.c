@@ -87,9 +87,29 @@ enum colors sensor_get(ColorSensor *sensor)
 	uint8_t i = 0;
 	select_channel(sensor->channel);
 	i2c_start(SENSOR_READ);
-	for(i = 0; i < SENSOR_VALUES; i++) {
+	for (i = 0; i < SENSOR_VALUES; i++) {
 		sensor->values[i] = i2c_read_ack();
 		sensor->values[i] |= (i2c_read_ack() << 8);
 	}
 	i2c_stop();
+
+	if (sensor->values[0] > YELLOW_CLEAR_LOWER) {
+		sensor->channel = YELLOW;
+	}
+	else if (sensor->values[0] > RGB_CLEAR_LOWER) {
+		if (sensor->values[1] > RED_LOWER) {
+			sensor->channel = RED;
+		}
+		else if (sensor->values[3] < sensor->values[1]) {
+			sensor->channel = GREEN;
+		}
+		else {
+			sensor->channel = BLUE;
+		}
+	}
+	else {
+		sensor->channel = NONE;
+	}
+	
+	return sensor->channel;
 }

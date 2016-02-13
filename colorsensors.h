@@ -24,6 +24,11 @@
 /* Number of values returned by a sensor read */
 #define SENSOR_VALUES 4
 
+/* Constants for color values read from sensor */
+#define YELLOW_CLEAR_LOWER 25000
+#define RGB_CLEAR_LOWER 4000
+#define RED_LOWER 4000
+
 enum colors { NONE, RED, GREEN, YELLOW, BLUE };
 
 typedef struct {
@@ -51,6 +56,3 @@ void sensor_print(ColorSensor *sensor);
 
 /* Obtains data from a color sensor */
 enum colors sensor_get(ColorSensor *sensor);
-
-/*  */
-void sensor_get_and_set(ColorSensor *sensor);
