@@ -28,5 +28,5 @@ Libraries
 who
 ---
 
-[Elisa Ravelo](https://github.com/elira0) - Hardware
-[Will Oberndorfer](https://github.com/mancxvi) - Software
+- [Elisa Ravelo](https://github.com/elira0) - Hardware
+- [Will Oberndorfer](https://github.com/mancxvi) - Software
