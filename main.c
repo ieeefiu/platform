@@ -26,14 +26,7 @@
 #include "USART.h"
 #include "colorsensors.h"
 
-static inline void testmenu(void)
-{
-	printString("Make a selection: \n"
-				"1. Red\n"
-				"2. Green\n"
-				"3. Yellow\n"
-				"4. Blue\n\n");
-}
+static inline void testmenu(void);
 
 volatile enum colors shovecolor = NONE;
 volatile uint8_t received;
@@ -61,7 +54,7 @@ int main(void)
 	
 	for (i = 0; i < SENSOR_NUMBER; i++) {
 		sensor_init(colorsensors[i]);
-		printString("Sensor initialized at channel ");
+		printString("Sensor initialized at channel \n");
 		printByte(colorsensors[i]->channel);
 	}
 
@@ -103,4 +96,13 @@ ISR(USART_RX_vect)
 		break;
 	}
 	sei();
+}
+
+static inline void testmenu(void)
+{
+	printString("Make a selection: \n"
+				"1. Red\n"
+				"2. Green\n"
+				"3. Yellow\n"
+				"4. Blue\n\n");
 }
