@@ -47,9 +47,11 @@ void select_channel(uint8_t channel);
 /* Return current channel */
 uint8_t selector_get_channel(void);
 
+/* Initialize a single color sensor in memory */
+ColorSensor *sensor_new(uint8_t channel);
 
-/* Initialize a single color sensor */
-ColorSensor *sensor_init(uint8_t channel);
+/* Initialize color sensor on i2c */
+void sensor_init(ColorSensor *sensor);
 
 /* Output sensor value over USART */
 void sensor_print(ColorSensor *sensor);

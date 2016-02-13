@@ -33,7 +33,7 @@ uint8_t selector_get_channel(void)
 	return retval - CHANNEL_OFFSET;
 }
 
-ColorSensor *sensor_init(uint8_t channel)
+ColorSensor *sensor_new(uint8_t channel)
 {
 	ColorSensor *sensor;
 	uint8_t i = 0;
@@ -45,6 +45,12 @@ ColorSensor *sensor_init(uint8_t channel)
 		sensor->values[i] = 0;
 	}
 	
+	return sensor;
+}
+
+void sensor_init(ColorSensor *sensor)
+{
+	select_channel(sensor->channel);
 	i2c_start(SENSOR_WRITE);
 	i2c_write(0x80 | 0x00);
 	i2c_stop();
@@ -54,8 +60,6 @@ ColorSensor *sensor_init(uint8_t channel)
 	i2c_start(SENSOR_WRITE);
 	i2c_write(0x80 | 0x14);
 	i2c_stop();
-	
-	return sensor;
 }
 
 void sensor_print(ColorSensor *sensor)

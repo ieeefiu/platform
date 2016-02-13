@@ -43,6 +43,9 @@ int main(void)
 	uint8_t i;
 
 	ColorSensor *colorsensors[SENSOR_NUMBER];
+	for (i = 0; i < SENSOR_NUMBER; i++) {
+		colorsensors[i] = sensor_new(i);
+	}
 	
 	initUSART();
 	sei();
@@ -57,7 +60,7 @@ int main(void)
 	printString("Initializing sensors...\n");
 	
 	for (i = 0; i < SENSOR_NUMBER; i++) {
-		colorsensors[i] = sensor_init(i);
+		sensor_init(colorsensors[i]);
 		printString("Sensor initialized at channel ");
 		printByte(colorsensors[i]->channel);
 	}
@@ -74,6 +77,7 @@ int main(void)
 		}
 	}
 	
+	return 0;
 }
 
 ISR(USART_RX_vect)
