@@ -26,6 +26,8 @@
 #include "USART.h"
 #include "colorsensors.h"
 
+static inline void testmenu(void);
+
 volatile enum colors shovecolor = NONE;
 volatile uint8_t received;
 
@@ -52,5 +54,36 @@ int main(void)
 		printString("Sensor initialized at channel ");
 		printByte(colorsensors[i]->channel);
 	}
+
+	printString("~ All sensors initialized ~\n\n");
+
+	while(1) {
+		
+	}
 	
+}
+
+ISR(USART_RX_vect)
+{
+	cli();
+	received = UDR0;
+
+	switch (received) {
+	case '1':
+		shovecolor = RED;
+		break;
+	case '2':
+		shovecolor = GREEN;
+		break;
+	case '3':
+		shovecolor = YELLOW;
+		break;
+	case '4':
+		shovecolor = BLUE;
+		break;
+	default:
+		shovecolor = NONE;
+		break;
+	}
+	sei();
 }
