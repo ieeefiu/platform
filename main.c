@@ -65,7 +65,7 @@ int main(void)
 	printString("~ All sensors initialized ~\n\n");
 
 	while(1) {
-		
+		testmenu();
 	}
 	
 }
