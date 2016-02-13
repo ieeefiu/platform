@@ -1,0 +1,10 @@
+# temp files created by emacs
+
+*~
+\#*\#
+.\#*
+
+# avr-gcc output
+
+*.elf
+*.hex
