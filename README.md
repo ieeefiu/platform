@@ -10,14 +10,20 @@ Description
 
 Pictures coming soon. Eats blocks, shoves them out by color.
 
-Materials used
---------------
+Materials
+---------
 
 - ATmega328p - Cheap 8-bit microcontroller
 - TCS34725 - I<sup>2</sup>C color sensor
 - PCA9547 - I<sup>2</sup>C channel switcher
 - US5881 - Cheap hall effect sensor
 - Some manner of motor or servo, idk
+
+Libraries
+---------
+
+- USART library by [Elliot Williams](https://github.com/hexagon5un)
+- I<sup>2</sup>C master library by [g4lvanix](https://github.com/g4lvanix)
 
 who
 ---
