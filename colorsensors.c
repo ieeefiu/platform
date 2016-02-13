@@ -94,22 +94,22 @@ enum colors sensor_get(ColorSensor *sensor)
 	i2c_stop();
 
 	if (sensor->values[0] > YELLOW_CLEAR_LOWER) {
-		sensor->channel = YELLOW;
+		sensor->color = YELLOW;
 	}
 	else if (sensor->values[0] > RGB_CLEAR_LOWER) {
 		if (sensor->values[1] > RED_LOWER) {
-			sensor->channel = RED;
+			sensor->color = RED;
 		}
 		else if (sensor->values[3] < sensor->values[1]) {
-			sensor->channel = GREEN;
+			sensor->color = GREEN;
 		}
 		else {
-			sensor->channel = BLUE;
+			sensor->color = BLUE;
 		}
 	}
 	else {
-		sensor->channel = NONE;
+		sensor->color = NONE;
 	}
 	
-	return sensor->channel;
+	return sensor->color;
 }
