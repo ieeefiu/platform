@@ -37,13 +37,24 @@ ColorSensor *sensor_init(uint8_t channel)
 {
 	ColorSensor *sensor;
 	uint8_t i = 0;
-
+	sensor = (ColorSensor *)malloc(sizeof(ColorSensor));
+	
 	sensor->channel = channel;
 	sensor->color = NONE;
 	for (i = 0; i < SENSOR_VALUES; i++) {
 		sensor->values[i] = 0;
 	}
-
+	
+	i2c_start(SENSOR_WRITE);
+	i2c_write(0x80 | 0x00);
+	i2c_stop();
+	i2c_start(SENSOR_WRITE);
+	i2c_write(0x01 | 0x02);
+	i2c_stop();
+	i2c_start(SENSOR_WRITE);
+	i2c_write(0x80 | 0x14);
+	i2c_stop();
+	
 	return sensor;
 }
 

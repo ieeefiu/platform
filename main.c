@@ -27,3 +27,30 @@
 #include "colorsensors.h"
 
 volatile enum colors shovecolor = NONE;
+volatile uint8_t received;
+
+int main(void)
+{
+	uint8_t i;
+
+	ColorSensor *colorsensors[SENSOR_NUMBER];
+	
+	initUSART();
+	sei();
+	set_sleep_mode(SLEEP_MODE_IDLE);
+	i2c_init();
+
+	printString("FIU IEEE Block Shoving Robot Platform Module\n"
+				"--------------------------------------------\n\n");
+
+	selector_init();
+
+	printString("Initializing sensors...\n");
+	
+	for (i = 0; i < SENSOR_NUMBER; i++) {
+		colorsensors[i] = sensor_init(i);
+		printString("Sensor initialized at channel ");
+		printByte(colorsensors[i]->channel);
+	}
+	
+}
