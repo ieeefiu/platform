@@ -26,7 +26,14 @@
 #include "USART.h"
 #include "colorsensors.h"
 
-static inline void testmenu(void);
+static inline void testmenu(void)
+{
+	printString("Make a selection: \n"
+				"1. Red\n"
+				"2. Green\n"
+				"3. Yellow\n"
+				"4. Blue\n\n");
+}
 
 volatile enum colors shovecolor = NONE;
 volatile uint8_t received;
