@@ -66,6 +66,12 @@ int main(void)
 
 	while(1) {
 		testmenu();
+		shovecolor = NONE;
+		sleep_mode();
+		for (i = 0; i < SENSOR_NUMBER; i++) {
+			sensor_get(colorsensors[i]);
+			sensor_print(colorsensors[i]);
+		}
 	}
 	
 }
