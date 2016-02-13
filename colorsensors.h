@@ -28,8 +28,8 @@ enum colors { NONE, RED, GREEN, YELLOW, BLUE };
 
 typedef struct {
 	uint8_t channel;
-	enum colors color_value;
-	uint16_t sensor_values[SENSOR_VALUES];
+	enum colors color;
+	uint16_t values[SENSOR_VALUES];
 } ColorSensor;
 
 
@@ -43,14 +43,14 @@ void select_channel(uint8_t channel);
 uint8_t selector_get_channel(void);
 
 
-/* Initialize color sensor */
+/* Initialize a single color sensor */
 ColorSensor *sensor_init(uint8_t channel);
 
 /* Output sensor value over USART */
-void sensor_printvalues(uint16_t *values);
+void sensor_print(ColorSensor *sensor);
+
+/* Gets color value from a color sensor */
+void sensor_get(ColorSensor *sensor);
 
 /* Populates the values array with sensor data from a single sensor */
 void sensor_get_and_set(ColorSensor *sensor);
-
-/* Gets color value from a color sensor */
-void sensor_get(uint16_t *values);
