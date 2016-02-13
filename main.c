@@ -24,4 +24,6 @@
 
 #include "i2c_master.h"
 #include "USART.h"
+#include "colorsensors.h"
 
+volatile enum colors shovecolor = NONE;
