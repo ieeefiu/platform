@@ -35,18 +35,23 @@ int main(void)
 {
 	uint8_t i;
 
+	initUSART();
+	UCSR0B |= (1 << RXCIE0);
+	
+	printString("FIU IEEE Block Shoving Robot Platform Module\n"
+				"--------------------------------------------\n\n");
+	
 	ColorSensor *colorsensors[SENSOR_NUMBER];
 	for (i = 0; i < SENSOR_NUMBER; i++) {
 		colorsensors[i] = sensor_new(i);
 	}
 	
-	initUSART();
+	
 	sei();
 	set_sleep_mode(SLEEP_MODE_IDLE);
 	i2c_init();
 
-	printString("FIU IEEE Block Shoving Robot Platform Module\n"
-				"--------------------------------------------\n\n");
+	
 
 	selector_init();
 
@@ -54,19 +59,27 @@ int main(void)
 	
 	for (i = 0; i < SENSOR_NUMBER; i++) {
 		sensor_init(colorsensors[i]);
-		printString("Sensor initialized at channel \n");
+		printString("Sensor initialized at channel ");
 		printByte(colorsensors[i]->channel);
+		printString("\n");
 	}
 
+	sensor_get(colorsensors[0]);
+	sensor_print(colorsensors[0]);
+	
 	printString("~ All sensors initialized ~\n\n");
-
+	
 	while(1) {
 		testmenu();
 		shovecolor = NONE;
 		sleep_mode();
-		for (i = 0; i < SENSOR_NUMBER; i++) {
-			sensor_get(colorsensors[i]);
-			sensor_print(colorsensors[i]);
+		
+		if (shovecolor != NONE) {
+			for (i = 0; i < SENSOR_NUMBER; i++) {
+				sensor_get(colorsensors[i]);
+				sensor_print(colorsensors[i]);
+			}
+			printString("\n");
 		}
 	}
 	
@@ -79,16 +92,16 @@ ISR(USART_RX_vect)
 	received = UDR0;
 
 	switch (received) {
-	case '1':
+	case 0x31:
 		shovecolor = RED;
 		break;
-	case '2':
+	case 0x32:
 		shovecolor = GREEN;
 		break;
-	case '3':
+	case 0x33:
 		shovecolor = YELLOW;
 		break;
-	case '4':
+	case 0x34:
 		shovecolor = BLUE;
 		break;
 	default:
