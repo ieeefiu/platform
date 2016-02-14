@@ -78,6 +78,7 @@ void sensor_print(ColorSensor *sensor)
 	printString("B: ");
 	printWord(sensor->values[3]);
 	printString("\nColor: ");
+	
 	switch (sensor->color) {
 	case NONE:
 		printString("NONE\n");
@@ -87,6 +88,9 @@ void sensor_print(ColorSensor *sensor)
 		break;
 	case GREEN:
 		printString("GREEN\n");
+		break;
+	case YELLOW:
+		printString("YELLOW\n");
 		break;
 	case BLUE:
 		printString("BLUE\n");
