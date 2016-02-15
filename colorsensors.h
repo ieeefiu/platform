@@ -7,6 +7,12 @@
  * Uses a PCA9547 to switch between them. 7-bit address is 0x70.
  ********************************************************************/
 
+#include <avr/io.h>
+#include <stdlib.h>
+
+#include "i2c_master.h"
+#include "USART.h"
+
 /* address constants for the channel switcher */
 #define CHANNEL_WRITE 0xE0
 #define CHANNEL_READ 0xE1

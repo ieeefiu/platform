@@ -2,11 +2,6 @@
  * Functions for reading and switching between color sensors
  ********************************************************************/
 
-#include <avr/io.h>
-#include <stdlib.h>
-
-#include "i2c_master.h"
-#include "USART.h"
 #include "colorsensors.h"
 
 void selector_init(void)

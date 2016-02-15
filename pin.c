@@ -1,12 +1,8 @@
 /*********************************************************************
- * Functions for shoving blocks
+ * Functions for pins
  ********************************************************************/
 
-#include <avr/io.h>
-
-#include "i2c_master.h"
-#include "USART.h"
-#include "colorsensors.h"
+#include "pin.h"
 
 Pin *pin_new(uint8_t channel)
 {

@@ -1,8 +1,14 @@
 #pragma once
 
 /*********************************************************************
- * Functions for shoving blocks
+ * Functions for pins
  ********************************************************************/
+
+#include <avr/io.h>
+
+#include "i2c_master.h"
+#include "USART.h"
+#include "colorsensors.h"
 
 #define TEST_SENSOR PB0
 
@@ -16,9 +22,6 @@ Pin *pin_new(uint8_t channel);
 
 /* initialize pin */
 void pin_init(Pin *pin);
-
-/* shove whatever needs shoving and report status */
-uint8_t shove(ColorSensor **sensors, Pin **pins, enum colors shovecolor);
 
 /* reset rail to zero position */
 uint8_t pin_return_to_zero(Pin *pin);
