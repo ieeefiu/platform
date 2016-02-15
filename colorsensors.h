@@ -19,7 +19,7 @@
 #define SENSOR_READ 0x53
 
 /* Number of sensors attached. Supports up to eight */
-#define SENSOR_NUMBER 1
+#define SENSOR_NUMBER 2
 
 /* Number of values returned by a sensor read */
 #define SENSOR_VALUES 4

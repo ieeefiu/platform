@@ -60,12 +60,12 @@ int main(void)
 	for (i = 0; i < SENSOR_NUMBER; i++) {
 		sensor_init(colorsensors[i]);
 		printString("Sensor initialized at channel ");
-		printByte(colorsensors[i]->channel);
+		printByte(selector_get_channel());
 		printString("\n");
+		_delay_ms(100);
+		sensor_get(colorsensors[i]);
+		sensor_print(colorsensors[i]);
 	}
-
-	sensor_get(colorsensors[0]);
-	sensor_print(colorsensors[0]);
 	
 	printString("~ All sensors initialized ~\n\n");
 	

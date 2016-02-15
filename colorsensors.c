@@ -37,7 +37,7 @@ ColorSensor *sensor_new(uint8_t channel)
 {
 	ColorSensor *sensor;
 	uint8_t i = 0;
-	sensor = (ColorSensor *)malloc(sizeof(ColorSensor));
+	sensor = malloc(sizeof(ColorSensor));
 	
 	sensor->channel = channel;
 	sensor->color = NONE;
