@@ -152,6 +152,10 @@ flash_109: PROGRAMMER_TYPE = avr109
 flash_109: PROGRAMMER_ARGS = -b 9600 -P /dev/ttyUSB0
 flash_109: flash
 
+flash_dragon_isp: PROGRAMMER_TYPE = dragon_isp
+flash_dragon_isp: PROGRAMMER_ARGS = -P usb
+flash_dragon_isp: flash
+
 ##########------------------------------------------------------##########
 ##########       Fuse settings and suitable defaults            ##########
 ##########------------------------------------------------------##########
