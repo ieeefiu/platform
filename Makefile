@@ -12,9 +12,9 @@ BAUD = 9600UL
 ## This is where your main() routine lives 
 MAIN = main.c
 
-## If you've split your program into multiple .c / .h files, 
-## include the additional source (in same directory) here 
-LOCAL_SOURCE = colorsensors.c
+## Local source directory and files
+LOCAL_SOURCE_DIR = ./src/
+LOCAL_SOURCE_FILES = colorsensors.c
 
 ## Here you can link to one more directory (and multiple .c files)
 EXTRA_SOURCE_DIR = ./lib/
@@ -47,7 +47,8 @@ AVRSIZE = avr-size
 AVRDUDE = avrdude
 
 ## Compilation options, type man avr-gcc if you're curious.
-CFLAGS = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -DBAUD=$(BAUD) -Os -I. -I$(EXTRA_SOURCE_DIR)
+CFLAGS = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -DBAUD=$(BAUD) -Os -I.
+CFLAGS += -I$(LOCAL_SOURCE_DIR) -I$(EXTRA_SOURCE_DIR)
 CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums 
 CFLAGS += -Wall -Wstrict-prototypes
 CFLAGS += -g -ggdb
@@ -60,6 +61,7 @@ CFLAGS += -std=gnu99
 TARGET = $(strip $(basename $(MAIN)))
 SRC = $(TARGET).c
 EXTRA_SOURCE = $(addprefix $(EXTRA_SOURCE_DIR), $(EXTRA_SOURCE_FILES))
+LOCAL_SOURCE = $(addprefix $(LOCAL_SOURCE_DIR), $(LOCAL_SOURCE_FILES))
 SRC += $(EXTRA_SOURCE) 
 SRC += $(LOCAL_SOURCE) 
 
