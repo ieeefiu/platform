@@ -14,7 +14,7 @@ MAIN = main.c
 
 ## Local source directory and files
 LOCAL_SOURCE_DIR = ./src/
-LOCAL_SOURCE_FILES = colorsensors.c
+LOCAL_SOURCE_FILES = colorsensors.c pins.c shove.c
 
 ## Here you can link to one more directory (and multiple .c files)
 EXTRA_SOURCE_DIR = ./lib/

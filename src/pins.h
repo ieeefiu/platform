@@ -5,6 +5,7 @@
  ********************************************************************/
 
 #include <avr/io.h>
+#include <stdlib.h>
 
 #include "i2c_master.h"
 #include "USART.h"

@@ -2,7 +2,7 @@
  * Functions for pins
  ********************************************************************/
 
-#include "pin.h"
+#include "pins.h"
 
 Pin *pin_new(uint8_t channel)
 {
@@ -19,27 +19,22 @@ void pin_init(Pin *pin)
 	
 }
 
-uint8_t shove(ColorSensor **sensors, Pin **pins, enum colors shovecolor)
-{
-	
-}
-
 uint8_t pin_return_to_zero(Pin *pin)
 {
-	
+	return 0;
 }
 
 uint8_t pin_move_forward(Pin *pin)
 {
-	
+	return 0;
 }
 
 uint8_t pin_move_backwards(Pin *pin)
 {
-	
+	return 0;
 }
 
 uint8_t pin_halt(Pin *pin)
 {
-	
+	return 0;
 }

@@ -9,7 +9,7 @@
 #include "i2c_master.h"
 #include "USART.h"
 #include "colorsensors.h"
-#include "pin.h"
+#include "pins.h"
 
 /* shove whatever needs shoving and report status */
 uint8_t shove_all(ColorSensor **sensors, Pin **pins, enum colors shovecolor);
