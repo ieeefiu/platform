@@ -8,7 +8,6 @@
 
 #include "i2c_master.h"
 #include "USART.h"
-#include "colorsensors.h"
 
 #define TEST_SENSOR PB0
 
