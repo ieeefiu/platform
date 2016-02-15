@@ -13,3 +13,7 @@
 
 /* shove whatever needs shoving and report status */
 uint8_t shove_all(ColorSensor **sensors, Pin **pins, enum colors shovecolor);
+
+/* shove a single rail */
+uint8_t shove_one(ColorSensor *sensor, Pin *pin, enum colors shovecolor);
+
