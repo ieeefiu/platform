@@ -33,8 +33,7 @@ The platform barfs out the blocks differently depending on which zone.
  - Check the color of the forwardmost block in each rail, pop into the bucket if it matches the color. Check the next block and repeat if necessary.
  - Move to the next bucket and repeat.
  - Repeat the above three steps until there are no more blocks on the platform.
-
- - Zone C contains a mixture of colors. All the blue ones go in the corkboard and all the rest go in the truck zone.
+- Zone C contains a mixture of colors. All the blue ones go in the corkboard and all the rest go in the truck zone.
 
 Materials
 ---------
