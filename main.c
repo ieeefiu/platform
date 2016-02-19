@@ -33,89 +33,89 @@ volatile uint8_t received;
 
 int main(void)
 {
-	uint8_t i;
+    uint8_t i;
 
-	initUSART();
-	UCSR0B |= (1 << RXCIE0);
-	
-	printString("FIU IEEE Block Shoving Robot Platform Module\n"
-				"--------------------------------------------\n\n");
-	
-	ColorSensor *colorsensors[SENSOR_NUMBER];
-	for (i = 0; i < SENSOR_NUMBER; i++) {
-		colorsensors[i] = sensor_new(i);
-	}
-	
-	
-	sei();
-	set_sleep_mode(SLEEP_MODE_IDLE);
-	i2c_init();
+    initUSART();
+    UCSR0B |= (1 << RXCIE0);
+    
+    printString("FIU IEEE Block Shoving Robot Platform Module\n"
+                "--------------------------------------------\n\n");
+    
+    ColorSensor *colorsensors[SENSOR_NUMBER];
+    for (i = 0; i < SENSOR_NUMBER; i++) {
+        colorsensors[i] = sensor_new(i);
+    }
+    
+    
+    sei();
+    set_sleep_mode(SLEEP_MODE_IDLE);
+    i2c_init();
 
-	
+    
 
-	selector_init();
+    selector_init();
 
-	printString("Initializing sensors...\n");
-	
-	for (i = 0; i < SENSOR_NUMBER; i++) {
-		sensor_init(colorsensors[i]);
-		printString("Sensor initialized at channel ");
-		printByte(selector_get_channel());
-		printString("\n");
-		_delay_ms(100);
-		sensor_get(colorsensors[i]);
-		sensor_print(colorsensors[i]);
-	}
-	
-	printString("~ All sensors initialized ~\n\n");
-	
-	while(1) {
-		testmenu();
-		shovecolor = NONE;
-		sleep_mode();
-		
-		if (shovecolor != NONE) {
-			for (i = 0; i < SENSOR_NUMBER; i++) {
-				sensor_get(colorsensors[i]);
-				sensor_print(colorsensors[i]);
-			}
-			printString("\n");
-		}
-	}
-	
-	return 0;
+    printString("Initializing sensors...\n");
+    
+    for (i = 0; i < SENSOR_NUMBER; i++) {
+        sensor_init(colorsensors[i]);
+        printString("Sensor initialized at channel ");
+        printByte(selector_get_channel());
+        printString("\n");
+        _delay_ms(100);
+        sensor_get(colorsensors[i]);
+        sensor_print(colorsensors[i]);
+    }
+    
+    printString("~ All sensors initialized ~\n\n");
+    
+    while(1) {
+        testmenu();
+        shovecolor = NONE;
+        sleep_mode();
+        
+        if (shovecolor != NONE) {
+            for (i = 0; i < SENSOR_NUMBER; i++) {
+                sensor_get(colorsensors[i]);
+                sensor_print(colorsensors[i]);
+            }
+            printString("\n");
+        }
+    }
+    
+    return 0;
 }
 
 ISR(USART_RX_vect)
 {
-	cli();
-	received = UDR0;
+    cli();
+    received = UDR0;
 
-	switch (received) {
-	case 0x31:
-		shovecolor = RED;
-		break;
-	case 0x32:
-		shovecolor = GREEN;
-		break;
-	case 0x33:
-		shovecolor = YELLOW;
-		break;
-	case 0x34:
-		shovecolor = BLUE;
-		break;
-	default:
-		shovecolor = NONE;
-		break;
-	}
-	sei();
+    switch (received) {
+    case 0x31:
+        shovecolor = RED;
+        break;
+    case 0x32:
+        shovecolor = GREEN;
+        break;
+    case 0x33:
+        shovecolor = YELLOW;
+        break;
+    case 0x34:
+        shovecolor = BLUE;
+        break;
+    default:
+        shovecolor = NONE;
+        break;
+    }
+    sei();
 }
 
 static inline void testmenu(void)
 {
-	printString("Make a selection: \n"
-				"1. Red\n"
-				"2. Green\n"
-				"3. Yellow\n"
-				"4. Blue\n\n");
+    printString("Make a selection: \n"
+                "1. Red\n"
+                "2. Green\n"
+                "3. Yellow\n"
+                "4. Blue\n\n");
 }

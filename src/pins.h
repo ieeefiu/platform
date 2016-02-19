@@ -13,8 +13,8 @@
 #define TEST_SENSOR PB0
 
 typedef struct {
-	/* placeholder for motor */
-	uint8_t channel;
+    /* placeholder for motor */
+    uint8_t channel;
 } Pin;
 
 /* make new pin */

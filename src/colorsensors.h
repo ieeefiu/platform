@@ -38,9 +38,9 @@
 enum colors { NONE, RED, GREEN, YELLOW, BLUE };
 
 typedef struct {
-	uint8_t channel;
-	enum colors color;
-	uint16_t values[SENSOR_VALUES];
+    uint8_t channel;
+    enum colors color;
+    uint16_t values[SENSOR_VALUES];
 } ColorSensor;
 
 
