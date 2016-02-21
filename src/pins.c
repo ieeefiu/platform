@@ -41,7 +41,7 @@ uint8_t pins_return_to_zero(Pin **pin)
 
 uint8_t pin_move_forward(Pin *pin)
 {
-    // tell motor to move forward
+    /* tell motor to move forward */
     return 0;
 }
 
@@ -52,7 +52,7 @@ uint8_t pin_move_backwards(Pin *pin)
         return 1;
     }
     else {
-        // tell motor to move backwards
+        /* tell motor to move backwards */
     }
     return 0;
 }
@@ -69,6 +69,6 @@ uint8_t pin_check_zero(Pin *pin)
 
 uint8_t pin_halt(Pin *pin)
 {
-    // tell motor to stop
+    /* tell motor to stop */
     return 0;
 }
