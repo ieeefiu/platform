@@ -1,7 +1,12 @@
 /*********************************************************************
  * Functions for pins
  ********************************************************************/
+#include <avr/io.h>
+#include <stdlib.h>
 
+#include "i2c_master.h"
+#include "USART.h"
+#include "colorsensors.h"
 #include "pins.h"
 
 Pin *pin_new(uint8_t channel, uint8_t zero_pin)

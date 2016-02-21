@@ -4,12 +4,6 @@
  * Functions for pins
  ********************************************************************/
 
-#include <avr/io.h>
-#include <stdlib.h>
-
-#include "i2c_master.h"
-#include "USART.h"
-
 #define TEST_SENSOR PB0
 
 typedef struct {

@@ -4,10 +4,6 @@
  * Functions for shoving
  ********************************************************************/
 
-#include <avr/io.h>
-
-#include "i2c_master.h"
-#include "USART.h"
 #include "colorsensors.h"
 #include "pins.h"
 
